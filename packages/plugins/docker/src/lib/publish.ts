@@ -44,7 +44,7 @@ export async function publish(
   // todo: consider using docker push --all-tags in the future
   tags.forEach((t) => {
     logger.log(`Pushing version ${t} to ${registryUrl || 'docker hub'}`);
-    execa('docker', ['push', t], {
+    execa('docker', ['push', `${registryUrl}/${t}`], {
       stdio: 'inherit',
     });
   });
